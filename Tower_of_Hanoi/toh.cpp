@@ -5,7 +5,7 @@
 using namespace std;
 
 //declare the stack as array
-int src[SIZE], dest[SIZE], aux[SIZE];
+int src[SIZE+1], dest[SIZE+1], aux[SIZE+1];
 int srcTop, destTop, auxTop;
 
 void print () {
@@ -28,7 +28,7 @@ for(ind = 0; ind < SIZE; ind++)
   src[ind] = ind + 1;
 for(ind = 0; ind < SIZE; ind++)
   aux[ind] = dest[ind] = -1;
-aux[SIZE] = dest[SIZE] = INT_MAX;
+src[SIZE] = aux[SIZE] = dest[SIZE] = INT_MAX;
 //print();
 
 srcTop = 0;
@@ -58,7 +58,7 @@ while(1){
       srcTop--;
       src[srcTop] = aux[auxTop];
       aux[auxTop] = -1;
-      srcTop++;
+      auxTop++;
     }
 
     if(dest[destTop] < aux[auxTop]) {
@@ -75,5 +75,6 @@ while(1){
     if(destTop == 0)
         break;
 }
+print();
 return 0;
 }
