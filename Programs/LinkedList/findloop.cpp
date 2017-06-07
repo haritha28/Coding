@@ -9,7 +9,7 @@ typedef struct sll
 }SLL;
 //SLL * start , * prev , * tptr;
 typedef SLL * SLLPTR;
-SLLPTR start,prev , tptr,newnode;
+SLLPTR start,prev , tptr,newnode, sptr, fptr;
 void createNode(int inp)
 {
   newnode= new sll();
@@ -49,6 +49,22 @@ void reversePrint(SLLPTR temptr)
 
 }
 
+//Code to check if there is a loop in the list
+void checkloop (SLLPTR temp) {
+  sptr = fptr = temp;
+  do {
+    fptr = (fptr->next)->next;
+    sptr = sptr->next;
+    if(sptr == fptr)  {
+      cout<<"Loop";
+    }
+    else
+      break;
+  }while(sptr && fptr && fptr->next);
+}
+
+
+}
 int main()
 {
  int ind;
@@ -66,6 +82,7 @@ int main()
  TraverseList();
  printf("\n");
  reversePrint(start);
+ checkloop(start);
 
  return 0;
 }
